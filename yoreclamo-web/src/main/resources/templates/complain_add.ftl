@@ -31,10 +31,10 @@
                       <div class="form-group">    
 
                         <label for="company" class="control-label">Empresa</label>
-                        <select id="company" name="company"  class="form-control js-example-responsive" style="width: 100%">
+                        <select id="company" name="company.id"  class="form-control js-example-responsive" style="width: 100%">
                             <option></option>
-                            <#list companies as v>
-                              <option value="${v.id}">${v.name}</option>
+                            <#list companies as company>
+                              <option value="${company.id}">${company.name}</option>
                             </#list>
                           </select>
                       </div>
