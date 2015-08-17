@@ -78,20 +78,19 @@ $(function() {
     	});
 
 		if (form.valid() == true){
-			var dataForm = $("#complain-form").serializeFormJSON();
+			var dataForm = $("#complain-form");
 			
 			$.ajax({
 			    	dataType: "json", 
 					type: "POST",
-					url: "/reclamo/registrar",
-					data: dataForm,
+					url: "/reclamo",
+					data: dataForm.serialize(),
 					success: function(data){
 						$("#modal-success").modal('show');
 					},
 			  		error: function(e){
 						console.log(e);
-			  		},
-			  		contentType: "application/json"
+			  		}
 			});
 			
     	}
