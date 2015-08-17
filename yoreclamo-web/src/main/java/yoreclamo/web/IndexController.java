@@ -16,7 +16,7 @@ public class IndexController {
 	@RequestMapping("/")
 	public String index(Model model) {
 
-		model.addAttribute("complains", complainService.findAllByEnabledIsTrue());
+		model.addAttribute("complains", complainService.findAll());
 
 		return "index";
 	}

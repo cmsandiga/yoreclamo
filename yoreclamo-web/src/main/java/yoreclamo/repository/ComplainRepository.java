@@ -10,7 +10,7 @@ public interface ComplainRepository extends MongoRepository<Complain, String>{
 
 	public Complain findByIdAndEnabledIsTrue(String id);
 	
-	public List<Complain> findAllByEnabledIsTrue();
+	public List<Complain> findAllByEnabledIsTrueOrderByCreationDesc();
 	
 	public List<Complain> findByIdNotAndEnabledIsTrueAndCompanyId(String id, String companyId);
 }

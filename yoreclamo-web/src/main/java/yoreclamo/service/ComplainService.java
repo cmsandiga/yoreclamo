@@ -20,9 +20,9 @@ public class ComplainService {
 	@Autowired
 	private CompanyService companyService;
 
-	public List<Complain> findAllByEnabledIsTrue() {
+	public List<Complain> findAll() {
 
-		List<Complain> complains = complainRepository.findAllByEnabledIsTrue();
+		List<Complain> complains = complainRepository.findAllByEnabledIsTrueOrderByCreationDesc();
 		if (complains == null)
 			return Collections.emptyList();
 
