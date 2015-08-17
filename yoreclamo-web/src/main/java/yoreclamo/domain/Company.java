@@ -16,6 +16,10 @@ public class Company {
 	@Field(value="complain_counter")
 	private Integer complainCounter;
 
+	public Company() {
+
+	}
+	
 	public String getId() {
 		return id;
 	}

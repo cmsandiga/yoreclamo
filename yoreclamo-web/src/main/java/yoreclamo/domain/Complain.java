@@ -14,12 +14,8 @@ public class Complain {
 
 	public String email;
 
-	public String companyName;
-
 	@Field(value = "company_id")
 	public String companyId;
-
-	public String newcompany;
 
 	public String title;
 
@@ -30,12 +26,16 @@ public class Complain {
 
 	public String url;
 
-	public String enabled;
+	public boolean enabled;
 
 	public Date creation;
 
 	public Company company;
 
+	public Complain() {
+		
+	}
+	
 	public String getId() {
 		return id;
 	}
@@ -60,28 +60,12 @@ public class Complain {
 		this.email = email;
 	}
 
-	public String getCompanyName() {
-		return companyName;
-	}
-
-	public void setCompanyName(String companyName) {
-		this.companyName = companyName;
-	}
-
 	public String getCompanyId() {
 		return companyId;
 	}
 
 	public void setCompanyId(String companyId) {
 		this.companyId = companyId;
-	}
-
-	public String getNewcompany() {
-		return newcompany;
-	}
-
-	public void setNewcompany(String newcompany) {
-		this.newcompany = newcompany;
 	}
 
 	public String getTitle() {
@@ -132,11 +116,11 @@ public class Complain {
 		this.company = company;
 	}
 
-	public String getEnabled() {
+	public boolean getEnabled() {
 		return enabled;
 	}
 
-	public void setEnabled(String enabled) {
+	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
 
