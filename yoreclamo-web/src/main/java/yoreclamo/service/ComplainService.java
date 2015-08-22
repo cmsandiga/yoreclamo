@@ -23,12 +23,9 @@ public class ComplainService {
 	public List<Complain> findAll() {
 
 		List<Complain> complains = complainRepository.findAllByEnabledIsTrueOrderByCreationDesc();
+		
 		if (complains == null)
 			return Collections.emptyList();
-
-		complains.stream().forEach(complain -> {
-			complain.company = companyService.findOne(complain.companyId);
-		});
 
 		return complains;
 	}
@@ -39,7 +36,7 @@ public class ComplainService {
 		if (complain == null)
 			return null;
 
-		complain.company = companyService.findOne(complain.companyId);
+		complain.body = complain.body.replaceAll("(\\r\\n|\\n)", "<br />");
 
 		return complain;
 	}
@@ -50,10 +47,6 @@ public class ComplainService {
 
 		if (complains == null)
 			complains = Collections.emptyList();
-
-		complains.stream().forEach(complain -> {
-			complain.company = companyService.findOne(complain.companyId);
-		});
 
 		return complains;
 	}
@@ -69,11 +62,11 @@ public class ComplainService {
 		complain.enabled = false;
 		complain.titleNormalized = complain.getTitle().toLowerCase().replace(" ", "-");
 		complain.company = company;
-		
+
 		complain = complainRepository.insert(complain);
 
 		company = companyService.incrementCompanyComplainCounter(company.getId());
-		
+
 		complain.url = generateIndexURL(complain.getId(), company.getId(), complain.titleNormalized);
 
 		return complainRepository.save(complain);
